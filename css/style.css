@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     background-image: url(../images/Moss.jpg);
@@ -15,7 +16,7 @@ h2 {
     border: none;
     border-radius: 10px;
     margin-bottom: 20px;
-    background-image: linear-gradient(to left, #b1dcd6, #c2e2e8, #d7e8f2, #ebeff6, #f8f8f8);
+    background-image: linear-gradient(to left, #91cec6, #c2e2e8, #d7e8f2, #ebeff6, #f8f8f8);
 }
 .card img {
     border-top-left-radius: 10px;
@@ -79,8 +80,9 @@ input[type="number"] {
   box-shadow: none;
   outline: none;
 }
-nav{
-    padding: 60px;
+.navbar-brand{
+    padding:20px;
+    color: white;
 }
 #carts{
     font-size: 13px !important;
