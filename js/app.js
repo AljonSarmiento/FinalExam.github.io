@@ -1,6 +1,5 @@
-       
-        let name = document.getElementById("name")
-        let address = document.getElementById("address")
+let name = document.getElementById("name")
+let address = document.getElementById("address")
 
         function addOrder(){
             carts.textContent=""
