@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url(/images/Moss.jpg);
+    background-image: url(../images/Moss.jpg);
 }
 .container {
     margin-top: 30px;
