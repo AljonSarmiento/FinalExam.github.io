@@ -18,9 +18,14 @@ h2 {
     margin-bottom: 20px;
     background-image: linear-gradient(to left, #91cec6, #c2e2e8, #d7e8f2, #ebeff6, #f8f8f8);
 }
+.card img:hover {
+    transform: scale(1.15); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
 .card img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    transition: transform 0.7s, box-shadow 0.7s;
 }
 .card-body {
     padding: 20px;
