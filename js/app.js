@@ -1,55 +1,3 @@
-const products = [
-  {
-    id: 1,
-    name: "Ninja 400",
-    price: 335000,
-    images: ["images/Ninja 400-1.jpg", "images/Ninja 400-2.jpg", "images/Ninja 400-3.jpg"],
-  },
-  {
-    id: 2,
-    name: "Ninja 500",
-    price: 353800,
-    images: ["images/Ninja 500-1.jpg", "images/Ninja 500-2.jpg", "images/Ninja 500-3.jpg"],
-  },
-  // Add more products here as needed
-];
-
-const productsContainer = document.getElementById("products");
-
-products.forEach(product => {
-  const carouselId = `carouselProduct${product.id}`;
-  const productHTML = `
-    <div class="col-12 col-sm-6 col-md-4 mb-3">
-      <div class="card">
-        <div id="${carouselId}" class="carousel slide">
-          <div class="carousel-inner">
-            ${product.images.map((img, index) => `
-              <div class="carousel-item ${index === 0 ? "active" : ""}">
-                <img src="${img}" class="card-img-top" alt="${product.name}" loading="lazy">
-              </div>
-            `).join("")}
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">${product.name}</h5>
-          <p>Price: ₱ <span>${product.price.toLocaleString()}</span></p>
-          <input type="number" class="form-control" placeholder="Enter quantity" min="0" data-id="${product.id}">
-        </div>
-      </div>
-    </div>
-  `;
-  productsContainer.innerHTML += productHTML;
-});
-
-
 // Dynamic handling of products
 let name = document.getElementById("name");
 let address = document.getElementById("address");
@@ -133,3 +81,70 @@ products.forEach((productInput) => {
 // Event listeners for cash and checkout
 cash.addEventListener("keyup", calculateChange);
 document.getElementById("checkoutBtn").addEventListener("click", displayReceipt);
+
+
+
+const products = [
+  {
+    id: 1,
+    name: "Ninja 400",
+    price: 335000,
+    images: ["images/Ninja 400-1.jpg", "images/Ninja 400-2.jpg", "images/Ninja 400-3.jpg"],
+  },
+  {
+    id: 2,
+    name: "Ninja 500",
+    price: 353800,
+    images: ["images/Ninja 500-1.jpg", "images/Ninja 500-2.jpg", "images/Ninja 500-3.jpg"],
+  },
+  // Add more products here as needed
+];
+
+const productsContainer = document.getElementById("products");
+
+products.forEach(product => {
+  const carouselId = `carouselProduct${product.id}`;
+
+  // Create product card
+  const productCard = document.createElement("div");
+  productCard.className = "col-12 col-sm-6 col-md-4 mb-3";
+  productCard.innerHTML = `
+    <div class="card">
+      <div id="${carouselId}" class="carousel slide">
+        <div class="carousel-inner">
+          ${product.images.map((img, index) => `
+            <div class="carousel-item ${index === 0 ? "active" : ""}">
+              <img src="${img}" class="card-img-top" alt="Image of ${product.name}" loading="lazy">
+            </div>
+          `).join("")}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">${product.name}</h5>
+        <p>Price: ₱ <span>${product.price.toLocaleString()}</span></p>
+        <input type="number" class="form-control product-quantity" placeholder="Enter quantity" min="0" data-id="${product.id}">
+      </div>
+    </div>
+  `;
+  
+  // Append the card to the container
+  productsContainer.appendChild(productCard);
+});
+
+// Event listener to capture quantity inputs (example)
+productsContainer.addEventListener("input", (event) => {
+  if (event.target.classList.contains("product-quantity")) {
+    const productId = event.target.dataset.id;
+    const quantity = parseFloat(event.target.value) || 0;
+    console.log(`Product ID: ${productId}, Quantity: ${quantity}`);
+  }
+});
+
